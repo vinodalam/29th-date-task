@@ -6,7 +6,7 @@ node {
     sh 'docker build -t dockerfile /var/lib/jenkins/workspace/flipkart'
     }
     stage('docker-login'){
-        withCredentials([string(credentialsId: 'dock', variable: 'cred')]) {
+        withCredentials([string(credentialsId: 'docker', variable: 'cred')]) {
             sh "docker login -u alamvinod -p ${cred}"
         }
         stage('docker push'){
