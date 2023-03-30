@@ -3,7 +3,7 @@ node {
         git branch: 'master', credentialsId: 'jenkins', url: 'https://github.com/vinodalam/29th-date-task.git'
     }
       stage('docker image'){
-    sh 'docker build -t dockerfile /var/lib/jenkins/workspace/vinod'
+    sh 'docker build -t dockerfile /var/lib/jenkins/workspace/flipkart'
     }
     stage('docker-login'){
         withCredentials([string(credentialsId: 'dock', variable: 'cred')]) {
