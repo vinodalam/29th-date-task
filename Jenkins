@@ -11,13 +11,12 @@ node {
         }
         stage('docker push'){
             "sh 'docker push alamvinod/project:late'"
-        }
+        }stage('ecr-login'){
         withEnv (["AWS_ACCESS_KEY_ID-${env.AWS_ACCESS_KEY_ID}","AWS_SECRET_ACCESS_KEY-${env.AWS_SECRET_ACCESS_KEY}","AWS_DEFAULT_REGION-${env.AWS_DEFAULT_REGION}"])
 {
-sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/o4p0t3e5'
-sh 'docker build -t vinod .'
-sh 'docker tag vinod:latest public.ecr.aws/o4p0t3e5/vinod:latest:""$BUILD_ID""'
-sh 'docker push public.ecr.aws/o4p0t3e5/vinod:latest:""$BUILD_ID""'
+    sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/o4p0t3e5'
+    
+}
 }
 }
 }
