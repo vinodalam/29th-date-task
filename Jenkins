@@ -2,6 +2,9 @@ node {
     stage('github'){
         git branch: 'master', credentialsId: 'jenkins', url: 'https://github.com/vinodalam/29th-date-task.git'
     }
+    stage('docker.sock-permission'){
+          sh 'chmod -R 777 /var/run/docker.sock'
+    }
       stage('docker image'){
     sh 'docker build -t dockerfile /var/lib/jenkins/workspace/vinod'
     }
