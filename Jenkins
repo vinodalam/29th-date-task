@@ -3,7 +3,7 @@ node {
         git branch: 'master', credentialsId: 'jenkins', url: 'https://github.com/vinodalam/29th-date-task.git'
     }
     stage('docker.sock-permission'){
-          sh 'cd /var/run/
+          sh 'cd /var/run/'
      }
      stage('per'){
           sh 'chmod -R 777 docker.sock'
